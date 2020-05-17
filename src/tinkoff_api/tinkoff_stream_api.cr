@@ -1,7 +1,7 @@
 require "json"
 require "http/web_socket"
 
-require "./constants"
+require "./tinkoff_api_constants"
 
 # Значение в стакане: цена и объём
 class CurrentStockInfo

@@ -1,6 +1,6 @@
 require "json"
+require "crest"
 
-require "../common/settings_manager"
 require "./tinkoff_api_constants"
 require "./tinkoff_market_instrument"
 
