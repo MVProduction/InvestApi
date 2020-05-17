@@ -38,4 +38,20 @@ class MoexBondInfo
         offerDateStr = offerDate ? offerDate.not_nil!.to_s("%d.%m.%Y") : ""
         io.puts "isin: #{isin} fullname: #{fullname} faceValue: #{faceValue} initialFaceValue: #{initialFaceValue} currency: #{currency} listLevel: #{listLevel} issueSize: #{issueSize} issueDate: #{issueDateStr} endDate: #{endDateStr} couponFrequency: #{couponFrequency} couponDate: #{couponDateStr} couponPercent: #{couponPercent} offerDate: #{offerDate}"
     end
+
+    def to_json(json : JSON::Builder)
+        json.object do
+            json.field "fullname", fullname
+            json.field "isin", isin
+            json.field "faceValue", faceValue
+            json.field "initialFaceValue", initialFaceValue
+            json.field "currency", currency
+            json.field "listLevel", listLevel
+            json.field "endDate", endDate
+            json.field "couponFrequency", couponFrequency
+            json.field "couponDate", couponDate
+            json.field "couponPercent", couponPercent
+            json.field "offerDate", offerDate
+        end
+    end
 end
