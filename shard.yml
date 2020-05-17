@@ -1,0 +1,18 @@
+name: invest-api
+version: 0.1.0
+
+authors:
+  - name <grabli66@gmail.com>
+
+description: |
+  API для работы с инвестициями
+
+dependencies:
+  crest:
+    github: mamantoha/crest
+
+# development_dependencies:
+#   webmock:
+#     github: manastech/webmock.cr
+
+license: MIT
