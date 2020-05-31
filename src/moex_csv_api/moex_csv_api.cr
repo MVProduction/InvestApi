@@ -50,6 +50,9 @@ class MoexCsvApi
                 listLevelStr = row[headers["LISTLEVEL"]]                
                 next if listLevelStr.empty?
 
+                priceStr = row[headers["PRICE"]]
+                next if priceStr.empty?                
+
                 fullname = row[headers["NAME"]]
                 isin = row[headers["ISIN"]]
                 faceValue = row[headers["FACEVALUE"]].gsub(',', '.').to_f64
@@ -63,6 +66,7 @@ class MoexCsvApi
                 
                 couponPercent = couponPercentStr.to_f64
                 offerDate = parseTime(row[headers["OFFERDATE"]])
+                price = priceStr.gsub(',', '.').to_f64
 
                 res.push(MoexBondInfo.new(
                     fullname: fullname,
@@ -77,7 +81,8 @@ class MoexCsvApi
                     couponFrequency: couponFrequency,
                     couponDate: couponDate,
                     couponPercent: couponPercent,
-                    offerDate: offerDate
+                    offerDate: offerDate,
+                    price: price
                 ))
             rescue e
                 puts e.inspect_with_backtrace

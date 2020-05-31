@@ -26,19 +26,27 @@ class MoexBondInfo
     getter couponPercent : Float64
     # Дата оферты    
     getter offerDate : Time?
+    # Цена в процентах
+    getter price : Float64
 
-    def initialize(@fullname, @isin, @faceValue, @initialFaceValue, @currency, @listLevel, @issueSize, @issueDate, @endDate, @couponFrequency, @couponDate, @couponPercent, @offerDate)        
-    end
+    def initialize(
+        @fullname, 
+        @isin, 
+        @faceValue, 
+        @initialFaceValue, 
+        @currency, 
+        @listLevel, 
+        @issueSize, 
+        @issueDate, 
+        @endDate, 
+        @couponFrequency, 
+        @couponDate, 
+        @couponPercent, 
+        @offerDate,
+        @price)
+    end   
 
-    # Переводит в строку
-    def to_s(io : IO)
-        issueDateStr = issueDate.to_s("%d.%m.%Y")
-        endDateStr = endDate.to_s("%d.%m.%Y")
-        couponDateStr = couponDate.to_s("%d.%m.%Y")
-        offerDateStr = offerDate ? offerDate.not_nil!.to_s("%d.%m.%Y") : ""
-        io.puts "isin: #{isin} fullname: #{fullname} faceValue: #{faceValue} initialFaceValue: #{initialFaceValue} currency: #{currency} listLevel: #{listLevel} issueSize: #{issueSize} issueDate: #{issueDateStr} endDate: #{endDateStr} couponFrequency: #{couponFrequency} couponDate: #{couponDateStr} couponPercent: #{couponPercent} offerDate: #{offerDate}"
-    end
-
+    # Преобразует в json
     def to_json(json : JSON::Builder)
         json.object do
             json.field "fullname", fullname
@@ -52,6 +60,7 @@ class MoexBondInfo
             json.field "couponDate", couponDate
             json.field "couponPercent", couponPercent
             json.field "offerDate", offerDate
+            json.field "price", price
         end
-    end
+    end        
 end
