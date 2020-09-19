@@ -1,7 +1,7 @@
 # Информация об инвестиционном инструменте в Тинькофф API
 class TinkoffMarketInstrument
     getter figi : String
-    getter isin : String
+    getter isin : String?
     getter lot : Int32
     getter currency : String
     getter name : String
